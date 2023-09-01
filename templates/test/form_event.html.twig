@@ -1,0 +1,18 @@
+<div id="form_event">
+    <form method="post" action="http://localhost:8035/api/events">
+        <p>
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title) }}
+        </p>
+        <p>
+        {{ form_label(form.start) }}
+        {{ form_widget(form.start) }}
+        </p>
+        <p>
+        {{ form_label(form.end) }}
+        {{ form_widget(form.end) }}
+        </p>
+        <input type="submit">
+    </form>
+</div>
+

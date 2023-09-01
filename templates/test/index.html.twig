@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!{% endblock %}
+
+{% block body %}
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <script>
+
+        const businessHours = [ // specify an array instead
+            {
+                daysOfWeek: [ 1, 2, 3 ], // Monday, Tuesday, Wednesday
+                startTime: '08:00', // 8am
+                endTime: '18:00' // 6pm
+            },
+            {
+                daysOfWeek: [ 4, 5 ], // Thursday, Friday
+                startTime: '10:00', // 10am
+                endTime: '16:00' // 4pm
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                height: 'auto',
+
+                //initialView: 'dayGridMonth',
+                initialView: 'timeGridWeek',
+                slotMinTime: '08:00:00',
+                slotMaxTime: '18:00:00',
+
+                businessHours: businessHours,
+
+                events: '/api/events.json',
+            });
+            calendar.render();
+        });
+    </script>
+
+    <div id='calendar'></div>
+
+{% endblock %}
